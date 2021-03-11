@@ -20,8 +20,11 @@ export default new Vuex.Store({
     GET_ERROR(state, error) {
       state.errors = [error, ...state.errors];
     },
-    ADD_TO_CART(state, product) {
-      state.cart = [product, ...state.cart];
+    UPDATE_CART(state, cart) {
+      state.cart = cart; // on met à jour le carte qui est passé en tant que payload
+    },
+    REMOVE_ONE_FROM_CART(state, cart) {
+      state.cart = cart; // on met à jour le carte qui est passé en tant que payload
     }
   },
   actions: {
@@ -47,13 +50,40 @@ export default new Vuex.Store({
         })
         .catch(err => console.error(err.message));
     },
-    addToCart({ commit }, product) {
+    updateCart({ commit }, product) {
       return productService
         .addToCart(product)
         .then(() => {
-          commit("ADD_TO_CART", product);
+          commit(
+            "UPDATE_CART",
+            JSON.parse(localStorage.getItem("vuex-commerce-cart"))
+          );
         })
         .catch(err => console.error(err));
+    },
+    removeOneFromCart({ commit }, product) {
+      return productService
+        .removeOneFromCart(product)
+        .then(() => {
+          commit(
+            "REMOVE_ONE_FROM_CART",
+            JSON.parse(localStorage.getItem("vuex-commerce-cart"))
+          );
+        })
+        .catch(err => console.error(err));
+    }
+  },
+  getters: {
+    getCart(state) {
+      return state.cart;
+    },
+    getNumberArticlesInCart(state){
+      if (!state.cart.products) return 0;
+      const numberArticles = state.cart.products.reduce((acc, curr) => {
+        console.log({ acc, curr });
+        return acc + curr.quantity;
+      }, 0);
+      return numberArticles;
     }
   }
 });

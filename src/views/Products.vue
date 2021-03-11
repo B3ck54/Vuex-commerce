@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     addToCart(product) {
-      this.$store.dispatch("addToCart", product).then(() => { // dispatcher une action qui s'appelle addToCart qui recevra en payload un product
+      this.$store.dispatch("updateCart", product).then(() => { // dispatcher une action qui s'appelle addToCart qui recevra en payload un product
         console.log(this.$store.state.cart); // puis on retourne une promesse, on affiche le contenu de ce morceau d'état
       });
     }

@@ -125,30 +125,5 @@
       "lastName": "Jacquet"
     }
   ],
-  "cart": [
-    {
-      "id": 9780596517748,
-      "title": "JavaScript: The Good Parts",
-      "author": {
-        "lastName": "Crockford",
-        "firstName": "Douglas"
-      },
-      "publisher": "O'Reilly Media",
-      "year": 2008,
-      "price": 29.99,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SL200_.jpg"
-    },
-    {
-      "id": 9781449331818,
-      "title": "Learning JavaScript Design Patterns",
-      "author": {
-        "lastName": "Osmani",
-        "firstName": "Addy"
-      },
-      "publisher": "O'Reilly Media",
-      "year": 2012,
-      "price": 44.99,
-      "image": "https://images-na.ssl-images-amazon.com/images/I/51jEMnP6UGL._SL200_.jpg"
-    }
-  ]
+  "cart": []
 }

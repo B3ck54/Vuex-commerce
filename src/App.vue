@@ -11,7 +11,10 @@
         <router-link to="/contact">Contact</router-link>
       </span>
       <span class="float-right">
-        <router-link to="/contact">Cart (0)</router-link>
+        <router-link to="/cart">
+          <i class="fas fa-shopping-cart"></i>
+          cart ({{ quantity }})
+        </router-link>
       </span>
     </div>
     <div class="container-fluid">
@@ -19,6 +22,16 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    quantity() {
+      return this.$store.getters.getNumberArticlesInCart;
+    }
+  }
+};
+</script>
 
 <style>
 #nav {
